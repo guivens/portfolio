@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guivens Pierre Charles — Développeur Full Stack & Ingénierie Agentique</title>
+<meta name="description" content="Développeur full stack basé à Saint-Marc, Haïti — plateformes web et systèmes de gestion, ingénierie agentique.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F8FA;
+    --text: #14161B;
+    --muted: #5B6270;
+    --faint: #8E94A0;
+    --accent: #1D3E8C;
+    --border: #DEE1E7;
+    --mono-bg: #EDEFF3;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0E1015;
+      --text: #E8EAEE;
+      --muted: #9096A3;
+      --faint: #666C79;
+      --accent: #7C9AE0;
+      --border: #262932;
+      --mono-bg: #181A21;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #0E1015;
+    --text: #E8EAEE;
+    --muted: #9096A3;
+    --faint: #666C79;
+    --accent: #7C9AE0;
+    --border: #262932;
+    --mono-bg: #181A21;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  body {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #fff; }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 80px 20px 100px;
+  }
+
+  a { color: var(--accent); }
+
+  .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin: 0 0 18px;
+  }
+
+  header.hero h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: clamp(38px, 7vw, 54px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+    text-wrap: balance;
+  }
+
+  header.hero .role {
+    font-size: 17px;
+    color: var(--muted);
+    margin: 0 0 28px;
+  }
+
+  header.hero .role .sep {
+    color: var(--faint);
+    margin: 0 8px;
+  }
+
+  header.hero p.lede {
+    font-size: 17px;
+    color: var(--text);
+    max-width: 56ch;
+    margin: 0;
+  }
+
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 56px 0;
+  }
+
+  section h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    font-size: 22px;
+    margin: 0 0 20px;
+    letter-spacing: -0.005em;
+  }
+
+  .about p {
+    font-size: 16px;
+    color: var(--text);
+    max-width: 62ch;
+    margin: 0 0 16px;
+  }
+  .about p:last-child { margin-bottom: 0; }
+
+  .founded {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .founded-row {
+    display: flex;
+    gap: 18px;
+    align-items: baseline;
+  }
+
+  @media (max-width: 560px) {
+    .founded-row { flex-direction: column; gap: 4px; }
+  }
+
+  .founded-row .fr-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--faint);
+    width: 110px;
+    flex-shrink: 0;
+  }
+
+  .founded-row .fr-body strong {
+    font-weight: 500;
+  }
+
+  .founded-row .fr-body span.desc {
+    color: var(--muted);
+  }
+
+  .projects {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-row {
+    padding: 22px 0;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+  }
+
+  .project-row:last-child { border-bottom: 1px solid var(--border); }
+
+  @media (max-width: 560px) {
+    .project-row { flex-direction: column; gap: 8px; }
+  }
+
+  .project-main .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .project-main h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 6px;
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+
+  .project-main p {
+    font-size: 14.5px;
+    color: var(--muted);
+    max-width: 46ch;
+    margin: 0;
+  }
+
+  .project-row a.visit {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    white-space: nowrap;
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+  }
+  .project-row a.visit:hover { opacity: 0.7; }
+
+  .skills-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .skills-row {
+    display: flex;
+    gap: 18px;
+  }
+
+  @media (max-width: 560px) {
+    .skills-row { flex-direction: column; gap: 4px; }
+  }
+
+  .skills-row .sk-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--faint);
+    width: 130px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .skills-row .sk-list {
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  footer.contact p {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 50ch;
+    margin: 0 0 20px;
+  }
+
+  footer.contact a.mail {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px;
+  }
+  footer.contact a.mail:hover { opacity: 0.7; }
+
+  .copyright {
+    margin-top: 64px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--faint);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hero">
+    <div class="eyebrow">Saint-Marc, Haïti</div>
+    <h1>Guivens Pierre Charles</h1>
+    <p class="role">Développeur full stack<span class="sep">·</span>ingénierie agentique<span class="sep">·</span>2 ans d'expérience</p>
+    <p class="lede">
+      Je conçois et je construis des plateformes web et des systèmes de gestion, en combinant développement full stack et outils d'ingénierie agentique pour livrer plus vite sans perdre en qualité.
+    </p>
+  </header>
+
+  <hr class="rule">
+
+  <section class="about">
+    <h2>Méthode</h2>
+    <p>
+      Je commence chaque projet par comprendre ce que l'organisation doit accomplir concrètement, avant de proposer une solution technique.
+    </p>
+    <p>
+      Mon flux de travail s'appuie sur des agents d'ingénierie autonomes pour architecturer, développer et itérer sur plusieurs plateformes en parallèle — ce qui me permet de faire avancer plusieurs projets à la fois sans sacrifier la rigueur du code.
+    </p>
+    <p>
+      Je construis en priorité une base technique solide, capable de tenir dans le temps et d'évoluer, avec des mises à jour régulières tout au long du projet.
+    </p>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2>Ce que j'ai fondé</h2>
+    <div class="founded">
+      <div class="founded-row">
+        <div class="fr-label">Co-fondateur</div>
+        <div class="fr-body"><strong>TERA Agency</strong> — <span class="desc">agence qui construit des plateformes web et des systèmes de gestion pour des entreprises, des ONG et d'autres organisations.</span></div>
+      </div>
+      <div class="founded-row">
+        <div class="fr-label">Co-fondateur</div>
+        <div class="fr-body"><strong>Pripam Tech</strong> — <span class="desc">association technologique basée à Saint-Marc, à l'origine de Machea et de Pripam.com.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2>Plateformes</h2>
+    <div class="projects">
+
+      <div class="project-row">
+        <div class="project-main">
+          <span class="tag">Collaboration</span>
+          <h3>Sabopay</h3>
+          <p>Plateforme SaaS de gestion d'entreprise, avec portail client en marque blanche. Co-fondée avec un associé, je porte l'architecture technique.</p>
+        </div>
+        <a class="visit" href="https://sabopay.co" target="_blank" rel="noopener">sabopay.co ↗</a>
+      </div>
+
+      <div class="project-row">
+        <div class="project-main">
+          <span class="tag">Créé</span>
+          <h3>Machea</h3>
+          <p>Plateforme e-commerce multi-vendeurs pour le marché haïtien, avec paiement local intégré.</p>
+        </div>
+        <a class="visit" href="https://machea.pripam.com" target="_blank" rel="noopener">machea.pripam.com ↗</a>
+      </div>
+
+      <div class="project-row">
+        <div class="project-main">
+          <span class="tag">Créé</span>
+          <h3>Pripam.com</h3>
+          <p>Mise en relation freelances et clients : profil public, tableau de bord et réservation avec paiement intégré.</p>
+        </div>
+        <a class="visit" href="https://pripam.com" target="_blank" rel="noopener">pripam.com ↗</a>
+      </div>
+
+      <div class="project-row">
+        <div class="project-main">
+          <span class="tag">Créé</span>
+          <h3>TERA Agency</h3>
+          <p>Site de l'agence : présentation des services, tarification claire et parcours de devis en plusieurs étapes.</p>
+        </div>
+        <a class="visit" href="https://teragency.com" target="_blank" rel="noopener">teragency.com ↗</a>
+      </div>
+
+      <div class="project-row">
+        <div class="project-main">
+          <span class="tag">Créé seul</span>
+          <h3>Dashboard client TERA</h3>
+          <p>Outil de gestion interne : suivi des projets, finances multi-devises, devis reçus et messagerie client.</p>
+        </div>
+        <a class="visit" href="https://app.teragency.com" target="_blank" rel="noopener">app.teragency.com ↗</a>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2>Compétences techniques</h2>
+    <div class="skills-block">
+      <div class="skills-row">
+        <div class="sk-label">Frontend</div>
+        <div class="sk-list">HTML, CSS, JavaScript, TypeScript, Vue 3, Nuxt.js, TailwindCSS</div>
+      </div>
+      <div class="skills-row">
+        <div class="sk-label">Backend & données</div>
+        <div class="sk-list">Supabase, PostgreSQL, WordPress / PHP</div>
+      </div>
+      <div class="skills-row">
+        <div class="sk-label">Outils</div>
+        <div class="sk-list">Vercel, Git, Stripe, MonCash (via un tiers)</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <footer class="contact">
+    <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:22px;margin:0 0 20px;">Contact</h2>
+    <p>Disponible pour échanger sur vos besoins et sur la manière dont je peux y répondre.</p>
+    <a class="mail" href="mailto:pierrecharlesguivens@gmail.com">pierrecharlesguivens@gmail.com</a>
+  </footer>
+
+  <div class="copyright">Guivens Pierre Charles — 2026</div>
+
+</div>
+</body>
+</html>
