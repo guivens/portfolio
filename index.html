@@ -171,15 +171,31 @@
     padding: 22px 0;
     border-top: 1px solid var(--border);
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 24px;
+    align-items: center;
+    gap: 20px;
   }
 
   .project-row:last-child { border-bottom: 1px solid var(--border); }
 
+  .project-row .thumb {
+    width: 86px;
+    height: 86px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--mono-bg);
+    flex-shrink: 0;
+  }
+
+  .project-row .project-main {
+    flex: 1;
+    min-width: 0;
+  }
+
   @media (max-width: 560px) {
-    .project-row { flex-direction: column; gap: 8px; }
+    .project-row { flex-wrap: wrap; }
+    .project-row .thumb { width: 64px; height: 64px; }
   }
 
   .project-main .tag {
@@ -319,6 +335,7 @@
     <div class="projects">
 
       <div class="project-row">
+        <img class="thumb" src="images/sabopay.png" alt="Capture d'écran du tableau de bord Sabopay">
         <div class="project-main">
           <span class="tag">Collaboration</span>
           <h3>Sabopay</h3>
@@ -328,6 +345,7 @@
       </div>
 
       <div class="project-row">
+        <img class="thumb" src="images/machea.png" alt="Capture d'écran de la page d'accueil Machea">
         <div class="project-main">
           <span class="tag">Créé</span>
           <h3>Machea</h3>
@@ -346,6 +364,7 @@
       </div>
 
       <div class="project-row">
+        <img class="thumb" src="images/tera-agency.jpg" alt="Capture d'écran de la page d'accueil TERA Agency">
         <div class="project-main">
           <span class="tag">Créé</span>
           <h3>TERA Agency</h3>
@@ -355,6 +374,7 @@
       </div>
 
       <div class="project-row">
+        <img class="thumb" src="images/dashboard-tera.jpg" alt="Capture d'écran du dashboard client TERA">
         <div class="project-main">
           <span class="tag">Créé seul</span>
           <h3>Dashboard client TERA</h3>
