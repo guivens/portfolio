@@ -3,419 +3,991 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guivens Pierre Charles — Développeur Full Stack & Ingénierie Agentique</title>
+<title>Guivens Pierre Charles - Développeur Full Stack & Ingénierie Agentique</title>
 <meta name="description" content="Développeur full stack basé à Saint-Marc, Haïti — plateformes web et systèmes de gestion, ingénierie agentique.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #F7F8FA;
-    --text: #14161B;
-    --muted: #5B6270;
-    --faint: #8E94A0;
-    --accent: #1D3E8C;
-    --border: #DEE1E7;
-    --mono-bg: #EDEFF3;
+    --primary: #006EFF;
+    --primary-hover: #0055CC;
+    --primary-10: #EBF3FF;
+    --accent: #FF4300;
+    --accent-10: #FFF0EB;
+    --purple: #7C3AED;
+    --purple-10: rgba(124,58,237,0.1);
+    --green: #10B981;
+    --green-10: rgba(16,185,129,0.1);
+    --heading: #1b1f48;
+    --body: #6b7185;
+    --muted: #8b90a3;
+    --border: #ececf1;
+    --soft: #f4f4f6;
+    --surface: #ffffff;
+    --float: #ffffff;
+    --navy: #15183a;
+    --shadow-card: 0 10px 24px -16px rgba(27,31,72,0.18);
+    --shadow-sm: 0 4px 12px -8px rgba(27,31,72,0.16);
+    --shadow-btn: 0 4px 10px -6px rgba(0,110,255,0.45);
   }
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #0E1015;
-      --text: #E8EAEE;
-      --muted: #9096A3;
-      --faint: #666C79;
-      --accent: #7C9AE0;
-      --border: #262932;
-      --mono-bg: #181A21;
+      --heading: #F0F6FF;
+      --body: #8B9DC3;
+      --muted: #4A6080;
+      --border: #1E2D4D;
+      --soft: #0D1B35;
+      --surface: #0D1B35;
+      --float: #0D1B35;
+      --bg-page: #060D1F;
+      --shadow-card: 0 10px 24px -16px rgba(0,0,0,0.4);
+      --shadow-sm: 0 4px 12px -8px rgba(0,0,0,0.35);
     }
   }
-
   :root[data-theme="dark"] {
-    --bg: #0E1015;
-    --text: #E8EAEE;
-    --muted: #9096A3;
-    --faint: #666C79;
-    --accent: #7C9AE0;
-    --border: #262932;
-    --mono-bg: #181A21;
+    --heading: #F0F6FF;
+    --body: #8B9DC3;
+    --muted: #4A6080;
+    --border: #1E2D4D;
+    --soft: #0D1B35;
+    --surface: #0D1B35;
+    --float: #0D1B35;
+    --bg-page: #060D1F;
+    --shadow-card: 0 10px 24px -16px rgba(0,0,0,0.4);
+    --shadow-sm: 0 4px 12px -8px rgba(0,0,0,0.35);
   }
+  :root { --bg-page: #ffffff; }
 
   * { box-sizing: border-box; }
 
-  html, body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-  }
+  html, body { margin: 0; }
 
   body {
-    font-family: 'IBM Plex Sans', system-ui, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
+    font-family: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--body);
+    background: var(--bg-page);
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
-  ::selection { background: var(--accent); color: #fff; }
+  html { scroll-behavior: smooth; }
 
-  .page {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 80px 20px 100px;
+  ::selection { background: var(--primary); color: #fff; }
+
+  img { max-width: 100%; display: block; }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  a { color: var(--primary); }
+
+  h1, h2, h3, h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--heading);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    font-weight: 800;
+    margin: 0;
   }
 
-  a { color: var(--accent); }
-
-  .mono {
-    font-family: 'IBM Plex Mono', monospace;
+  .grad-text {
+    background: linear-gradient(100deg, var(--primary) 0%, var(--purple) 60%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .eyebrow {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 9.5px;
+    font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--faint);
-    margin: 0 0 18px;
+    color: var(--muted);
+    background: var(--float);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 11px;
+    box-shadow: var(--shadow-sm);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--purple) 60%, var(--accent));
+    flex-shrink: 0;
   }
 
-  header.hero h1 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-optical-sizing: auto;
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all .2s ease;
+  }
+  .btn svg { width: 17px; height: 17px; }
+
+  .btn-primary {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 4px 10px -6px rgba(0,110,255,0.45);
+  }
+  .btn-primary:hover { background: var(--primary-hover); box-shadow: 0 6px 14px -6px rgba(0,110,255,0.55); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--heading);
+    border-color: var(--border);
+  }
+  .btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
+
+  .btn-ghost-light {
+    background: transparent;
+    color: #fff;
+    border-color: rgba(255,255,255,0.22);
+  }
+  .btn-ghost-light:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ---------- Nav (pill flottante, détachée) ---------- */
+  .nav-outer {
+    position: sticky;
+    top: 14px;
+    z-index: 30;
+    padding: 0 20px;
+  }
+
+  .nav {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--float);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    box-shadow: 0 3px 10px -6px rgba(27,31,72,0.12);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 8px 8px 8px 18px;
+    height: auto;
+  }
+
+  .nav .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 14.5px;
+    color: var(--heading);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .nav .brand .mark {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 55%, var(--accent) 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 13.5px;
+    flex-shrink: 0;
+  }
+
+  .nav ul {
+    list-style: none;
+    display: flex;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav ul a {
+    color: var(--body);
+    text-decoration: none;
+    font-size: 14px;
     font-weight: 500;
-    font-size: clamp(38px, 7vw, 54px);
-    line-height: 1.08;
-    letter-spacing: -0.01em;
-    margin: 0 0 6px;
+    padding: 8px 14px;
+    border-radius: 999px;
+  }
+  .nav ul a:hover { color: var(--heading); background: var(--soft); }
+
+  .nav .btn-primary {
+    margin-left: auto;
+    flex-shrink: 0;
+    padding: 9px 16px;
+    font-size: 13px;
+  }
+
+  @media (max-width: 760px) {
+    .nav ul { display: none; }
+  }
+  @media (max-width: 480px) {
+    .nav .brand-text { display: none; }
+    .nav-outer { top: 10px; padding: 0 12px; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    padding: 40px 0 0;
+    overflow: hidden;
+  }
+
+  .hero-deco {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, rgba(27,31,72,0.03) 1px, transparent 1px) 0 0 / 56px 56px,
+      linear-gradient(rgba(27,31,72,0.03) 1px, transparent 1px) 0 0 / 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 60% 50% at 30% 30%, #000, transparent);
+    mask-image: radial-gradient(ellipse 60% 50% at 30% 30%, #000, transparent);
+  }
+
+  .hero-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 3.8vw, 44px);
+    margin: 14px 0 14px;
     text-wrap: balance;
   }
 
-  header.hero .role {
-    font-size: 17px;
-    color: var(--muted);
-    margin: 0 0 28px;
+  .hero .role { font-size: 14px; color: var(--body); margin: 0 0 18px; }
+
+  .hero p.lede { font-size: 14px; color: var(--body); max-width: 50ch; margin: 0 0 22px; line-height: 1.5; }
+
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .stage { position: relative; max-width: 420px; margin: 0 auto; }
+
+  .photo-frame {
+    padding: 3px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 55%, var(--accent) 100%);
+    box-shadow: 0 0 46px -14px rgba(0,110,255,0.4);
   }
 
-  header.hero .role .sep {
-    color: var(--faint);
-    margin: 0 8px;
+  .hero-photo {
+    aspect-ratio: 4 / 4.6;
+    border-radius: 27px;
+    overflow: hidden;
+    background: var(--soft);
   }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
 
-  header.hero p.lede {
-    font-size: 17px;
-    color: var(--text);
-    max-width: 56ch;
-    margin: 0;
-  }
-
-  hr.rule {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 56px 0;
-  }
-
-  section h2 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-weight: 500;
-    font-size: 22px;
-    margin: 0 0 20px;
-    letter-spacing: -0.005em;
-  }
-
-  .about p {
-    font-size: 16px;
-    color: var(--text);
-    max-width: 62ch;
-    margin: 0 0 16px;
-  }
-  .about p:last-child { margin-bottom: 0; }
-
-  .founded {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .founded-row {
-    display: flex;
-    gap: 18px;
-    align-items: baseline;
-  }
-
-  @media (max-width: 560px) {
-    .founded-row { flex-direction: column; gap: 4px; }
-  }
-
-  .founded-row .fr-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--faint);
-    width: 110px;
-    flex-shrink: 0;
-  }
-
-  .founded-row .fr-body strong {
-    font-weight: 500;
-  }
-
-  .founded-row .fr-body span.desc {
-    color: var(--muted);
-  }
-
-  .projects {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .project-row {
-    padding: 22px 0;
-    border-top: 1px solid var(--border);
+  .float {
+    position: absolute;
     display: flex;
     align-items: center;
+    gap: 10px;
+    background: var(--float);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px -8px rgba(27,31,72,0.16);
+    padding: 10px 14px;
+    text-align: left;
+    z-index: 2;
+  }
+  .f-icon {
+    width: 30px; height: 30px;
+    border-radius: 9px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .f-icon svg { width: 14px; height: 14px; }
+  .f-label { display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+  .f-big { font-size: 17px; font-weight: 800; color: var(--heading); letter-spacing: -0.01em; line-height: 1.2; }
+  .float small { display: none; }
+
+  .float-dark {
+    top: 16px;
+    left: -14px;
+    background: var(--navy);
+    border-color: rgba(255,255,255,0.08);
+  }
+  .float-dark .f-icon { background: var(--accent); }
+  .float-dark .f-label { color: rgba(255,255,255,0.45); }
+  .float-dark .f-big { color: #fff; }
+
+  .float-light { bottom: 14px; right: -14px; }
+  .float-light .f-icon { background: var(--primary-10); }
+  .float-light .f-icon svg { stroke: var(--primary); }
+
+  @media (max-width: 900px) {
+    .float-dark { left: 6px; }
+    .float-light { right: 6px; }
+  }
+  @media (max-width: 780px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-grid > div:first-child { order: 2; text-align: center; }
+    .hero .lede { margin-left: auto; margin-right: auto; }
+    .hero-actions { justify-content: center; }
+    .stage { order: 1; margin: 0 auto 12px; }
+    .float-dark { left: 10px; }
+    .float-light { right: 10px; }
+  }
+  @media (max-width: 420px) {
+    .float { padding: 9px 12px; }
+    .f-big { font-size: 15px; }
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding: 52px 0; position: relative; z-index: 1; }
+  section.soft {
+    background: var(--soft);
+    margin: 8px 22px;
+    border-radius: 42px;
+    padding: 44px 0;
+  }
+  section.soft .wrap { max-width: 1132px; }
+
+  @media (max-width: 640px) {
+    section.soft { margin: 8px 12px; border-radius: 24px; padding: 36px 0; }
+    section { padding: 40px 0; }
+  }
+
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 44px; }
+  .section-head h2 { font-size: clamp(21px, 2.8vw, 32px); margin: 12px 0 10px; }
+  .section-head p { font-size: 13.5px; color: var(--body); line-height: 1.5; margin: 0; }
+  .section-head.left { text-align: left; margin-left: 0; }
+
+  /* ---------- Card grid (méthode / services) ---------- */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
   }
+  @media (max-width: 980px) { .card-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .card-grid { grid-template-columns: 1fr; } }
 
-  .project-row:last-child { border-bottom: 1px solid var(--border); }
-
-  .project-row .thumb {
-    width: 86px;
-    height: 86px;
-    object-fit: cover;
-    object-position: top;
-    border-radius: 6px;
+  .feat-card {
+    background: var(--float);
     border: 1px solid var(--border);
-    background: var(--mono-bg);
-    flex-shrink: 0;
+    border-radius: 18px;
+    padding: 26px 22px;
+    box-shadow: var(--shadow-sm);
+    transition: transform .2s, box-shadow .2s;
   }
+  .feat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-card); }
 
-  .project-row .project-main {
-    flex: 1;
-    min-width: 0;
+  .feat-icon {
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
   }
+  .feat-icon svg { width: 19px; height: 19px; }
 
-  @media (max-width: 560px) {
-    .project-row { flex-wrap: wrap; }
-    .project-row .thumb { width: 64px; height: 64px; }
+  .feat-card h3 { font-size: 14.5px; font-weight: 700; margin: 0 0 6px; }
+  .feat-card p { font-size: 12.5px; color: var(--body); margin: 0; line-height: 1.45; }
+  .feat-card p strong { color: var(--heading); }
+
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .skill-pills span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px; font-weight: 600;
+    padding: 4px 10px 4px 8px; border-radius: 999px;
+    background: var(--soft); color: var(--heading);
+    border: 1px solid var(--border);
   }
+  .skill-pills img { width: 13px; height: 13px; flex-shrink: 0; }
 
-  .project-main .tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11.5px;
-    color: var(--faint);
-    text-transform: uppercase;
+  /* ---------- Services illustrés (façon "solutions digitales") ---------- */
+  .sol-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 980px) { .sol-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .sol-grid { grid-template-columns: 1fr; } }
+
+  .sol-card {
+    position: relative;
+    background: var(--float);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow-sm);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .sol-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card); }
+
+  .sol-pic {
+    position: relative;
+    height: 168px;
+    margin: 11px 11px 0;
+    border-radius: 13px;
+    overflow: hidden;
+  }
+  .illus { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 14px; }
+
+  .illus-web { background: linear-gradient(140deg, #EBF3FF 0%, #C7DCFF 100%); }
+  .mock-browser { width: 100%; height: 100%; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,110,255,0.14); display: flex; flex-direction: column; }
+  .mock-bar { display: flex; align-items: center; gap: 4px; padding: 7px 10px; background: #f8fafc; border-bottom: 1px solid #e8edf5; flex-shrink: 0; }
+  .mock-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .mock-url { flex: 1; height: 10px; background: #e8edf5; border-radius: 6px; margin-left: 4px; }
+  .mock-body { flex: 1; padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+  .mock-nav { height: 12px; background: #006EFF; border-radius: 4px; opacity: .15; }
+  .mock-hero { flex: 1; background: linear-gradient(90deg, #EBF3FF, #e0e9ff); border-radius: 6px; }
+  .mock-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+  .mock-card { height: 22px; background: #f4f6ff; border-radius: 5px; border: 1px solid #e8edf5; }
+
+  .illus-data { background: linear-gradient(140deg, #F5F3FF 0%, #EDE9FE 100%); }
+  .mock-dash { width: 100%; }
+  .mock-stats { display: flex; gap: 6px; margin-bottom: 6px; }
+  .mock-stat { flex: 1; height: 34px; background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.18); border-radius: 7px; }
+  .mock-chart { display: flex; align-items: flex-end; gap: 4px; height: 30px; margin-bottom: 6px; }
+  .mock-bar-el { flex: 1; background: #7C3AED; border-radius: 2px; opacity: .55; }
+  .mock-rows { display: flex; flex-direction: column; gap: 5px; }
+  .mock-row-el { height: 7px; background: rgba(124,58,237,0.14); border-radius: 3px; }
+
+  .illus-agent { background: linear-gradient(140deg, #F0FDF4 0%, #BBF7D0 100%); }
+
+  .illus-pay { background: linear-gradient(140deg, #FFF7ED 0%, #FFEDD5 100%); }
+  .mock-card-el { width: 128px; height: 78px; background: linear-gradient(135deg, #FF4300, #FF7A3D); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 8px 20px -8px rgba(255,67,0,0.4); }
+  .mock-chip { width: 20px; height: 15px; background: rgba(255,255,255,0.5); border-radius: 3px; }
+  .mock-card-line { height: 6px; background: rgba(255,255,255,0.7); border-radius: 3px; }
+  .mock-card-line.short { width: 50%; }
+
+  .sol-badge {
+    position: absolute; left: 23px; top: 162px;
+    width: 34px; height: 34px; border-radius: 50%;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    border: 3px solid var(--float);
+    z-index: 1;
+  }
+  .sol-badge svg { width: 15px; height: 15px; }
+
+  .sol-txt { padding: 30px 18px 22px; }
+  .sol-txt h3 { font-size: 14.5px; margin: 0 0 6px; }
+  .sol-txt p { font-size: 12.5px; color: var(--body); line-height: 1.4; margin: 0; }
+
+  /* ---------- Portfolio grid ---------- */
+  .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  @media (max-width: 720px) { .portfolio-grid { grid-template-columns: 1fr; } }
+
+  .p-card {
+    background: var(--float);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    display: flex; flex-direction: column;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .p-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-card); }
+
+  .p-card .thumb-wrap { position: relative; aspect-ratio: 16 / 10; background: var(--soft); overflow: hidden; }
+  .p-card .thumb-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  /* Captures avec barre d'onglets/URL visible en haut : on masque cette bande */
+  .p-card .thumb-wrap.has-chrome img { top: -12%; height: 114%; }
+
+  .p-card .p-body { padding: 22px 24px 24px; flex: 1; display: flex; flex-direction: column; }
+
+  .p-card .tag {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 9px;
+    font-weight: 700;
     letter-spacing: 0.05em;
-    display: block;
-    margin-bottom: 6px;
+    text-transform: uppercase;
+    color: var(--primary);
+    background: var(--primary-10);
+    border-radius: 999px;
+    padding: 3px 9px;
+    margin-bottom: 8px;
   }
 
-  .project-main h3 {
-    font-size: 18px;
-    font-weight: 500;
-    margin: 0 0 6px;
-    font-family: 'IBM Plex Sans', sans-serif;
-  }
+  .p-card h3 { font-size: 15.5px; font-weight: 700; margin: 0 0 6px; }
+  .p-card p { font-size: 12.5px; color: var(--body); margin: 0 0 16px; flex: 1; line-height: 1.45; }
 
-  .project-main p {
-    font-size: 14.5px;
-    color: var(--muted);
-    max-width: 46ch;
-    margin: 0;
+  .p-card a.visit {
+    font-size: 13.5px; font-weight: 600;
+    text-decoration: none; color: var(--primary);
+    display: inline-flex; align-items: center; gap: 5px;
   }
+  .p-card a.visit:hover { color: var(--primary-hover); }
 
-  .project-row a.visit {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    white-space: nowrap;
-    text-decoration: none;
-    border-bottom: 1px solid var(--accent);
-    padding-bottom: 1px;
+  /* ---------- Contact / footer ---------- */
+  footer.contact {
+    background: var(--navy);
+    border-radius: 32px;
+    padding: 64px 48px;
+    text-align: center;
+    color: #fff;
   }
-  .project-row a.visit:hover { opacity: 0.7; }
-
-  .skills-block {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .skills-row {
-    display: flex;
-    gap: 18px;
-  }
+  footer.contact .eyebrow { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); }
+  footer.contact h2 { color: #fff; font-size: clamp(21px, 2.8vw, 30px); margin: 14px 0 12px; }
+  footer.contact p { font-size: 14px; color: rgba(255,255,255,0.6); max-width: 50ch; margin: 0 auto 24px; }
 
   @media (max-width: 560px) {
-    .skills-row { flex-direction: column; gap: 4px; }
+    footer.contact { padding: 44px 24px; border-radius: 22px; }
   }
-
-  .skills-row .sk-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--faint);
-    width: 130px;
-    flex-shrink: 0;
-    padding-top: 2px;
-  }
-
-  .skills-row .sk-list {
-    font-size: 15px;
-    color: var(--text);
-  }
-
-  footer.contact p {
-    font-size: 16px;
-    color: var(--muted);
-    max-width: 50ch;
-    margin: 0 0 20px;
-  }
-
-  footer.contact a.mail {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 16px;
-    text-decoration: none;
-    border-bottom: 1px solid var(--accent);
-    padding-bottom: 2px;
-  }
-  footer.contact a.mail:hover { opacity: 0.7; }
 
   .copyright {
-    margin-top: 64px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11.5px;
-    color: var(--faint);
+    margin: 40px 0 60px;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
   }
 </style>
 </head>
 <body>
-<div class="page">
 
-  <header class="hero">
-    <div class="eyebrow">Saint-Marc, Haïti</div>
-    <h1>Guivens Pierre Charles</h1>
-    <p class="role">Développeur full stack<span class="sep">·</span>ingénierie agentique<span class="sep">·</span>2 ans d'expérience</p>
-    <p class="lede">
-      Je conçois et je construis des plateformes web et des systèmes de gestion, en combinant développement full stack et outils d'ingénierie agentique pour livrer plus vite sans perdre en qualité.
-    </p>
-  </header>
+  <div class="nav-outer">
+    <nav class="nav">
+      <a href="#top" class="brand">
+        <span class="mark">G</span>
+        <span class="brand-text">Guivens Pierre Charles</span>
+      </a>
+      <ul>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#process">Méthode</a></li>
+        <li><a href="#services">Ce que je fais</a></li>
+        <li><a href="#portfolio">Projets</a></li>
+        <li><a href="#parcours">Parcours</a></li>
+      </ul>
+      <a class="btn btn-primary" href="mailto:pierrecharlesguivens@gmail.com">
+        Me contacter
+      </a>
+    </nav>
+  </div>
 
-  <hr class="rule">
+  <div class="wrap" id="top">
 
-  <section class="about">
-    <h2>Méthode</h2>
-    <p>
-      Je commence chaque projet par comprendre ce que l'organisation doit accomplir concrètement, avant de proposer une solution technique.
-    </p>
-    <p>
-      Mon flux de travail s'appuie sur des agents d'ingénierie autonomes pour architecturer, développer et itérer sur plusieurs plateformes en parallèle — ce qui me permet de faire avancer plusieurs projets à la fois sans sacrifier la rigueur du code.
-    </p>
-    <p>
-      Je construis en priorité une base technique solide, capable de tenir dans le temps et d'évoluer, avec des mises à jour régulières tout au long du projet.
-    </p>
-  </section>
-
-  <hr class="rule">
-
-  <section>
-    <h2>Ce que j'ai fondé</h2>
-    <div class="founded">
-      <div class="founded-row">
-        <div class="fr-label">Co-fondateur</div>
-        <div class="fr-body"><strong>TERA Agency</strong> — <span class="desc">agence qui construit des plateformes web et des systèmes de gestion pour des entreprises, des ONG et d'autres organisations.</span></div>
-      </div>
-      <div class="founded-row">
-        <div class="fr-label">Co-fondateur</div>
-        <div class="fr-body"><strong>Pripam Tech</strong> — <span class="desc">association technologique basée à Saint-Marc, à l'origine de Machea et de Pripam.com.</span></div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule">
-
-  <section>
-    <h2>Plateformes</h2>
-    <div class="projects">
-
-      <div class="project-row">
-        <img class="thumb" src="images/sabopay.png" alt="Capture d'écran du tableau de bord Sabopay">
-        <div class="project-main">
-          <span class="tag">Collaboration</span>
-          <h3>Sabopay</h3>
-          <p>Plateforme SaaS de gestion d'entreprise, avec portail client en marque blanche. Co-fondée avec un associé, je porte l'architecture technique.</p>
+    <header class="hero">
+      <div class="hero-deco"></div>
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Saint-Marc, Haïti</span>
+          <h1>Bonjour, je suis<br><span class="grad-text">Guivens PIERRE CHARLES</span></h1>
+          <p class="role">Développeur full stack / ingénierie agentique / étudiant en TIC</p>
+          <p class="lede">
+            Je conçois et je construis des plateformes web et des systèmes de gestion, en combinant développement full stack et outils d'ingénierie agentique pour livrer plus vite sans perdre en qualité.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#portfolio">
+              Voir mes projets
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M10 8l4 4-4 4"/></svg>
+            </a>
+            <a class="btn btn-ghost" href="mailto:pierrecharlesguivens@gmail.com">Me contacter</a>
+          </div>
         </div>
-        <a class="visit" href="https://sabopay.co" target="_blank" rel="noopener">sabopay.co ↗</a>
-      </div>
 
-      <div class="project-row">
-        <img class="thumb" src="images/machea.png" alt="Capture d'écran de la page d'accueil Machea">
-        <div class="project-main">
-          <span class="tag">Créé</span>
-          <h3>Machea</h3>
-          <p>Plateforme e-commerce multi-vendeurs pour le marché haïtien, avec paiement local intégré.</p>
+        <div class="stage">
+          <div class="photo-frame">
+            <div class="hero-photo">
+              <img src="images/guivens-photo.png" alt="Portrait de Guivens Pierre Charles">
+            </div>
+          </div>
+          <div class="float float-dark">
+            <span class="f-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"></path><path d="m16.24 7.76 2.83-2.83"></path><path d="M18 12h4"></path><path d="m16.24 16.24 2.83 2.83"></path><path d="M12 18v4"></path><path d="m4.93 19.07 2.83-2.83"></path><path d="M2 12h4"></path><path d="m4.93 4.93 2.83 2.83"></path></svg>
+            </span>
+            <div>
+              <span class="f-label">Expérience</span>
+              <div class="f-big">+2 ans</div>
+            </div>
+          </div>
+          <div class="float float-light">
+            <span class="f-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M10 8l4 4-4 4"></path></svg>
+            </span>
+            <div>
+              <span class="f-label">Livrés</span>
+              <div class="f-big">5 projets</div>
+            </div>
+          </div>
         </div>
-        <a class="visit" href="https://machea.pripam.com" target="_blank" rel="noopener">machea.pripam.com ↗</a>
       </div>
 
-      <div class="project-row">
-        <div class="project-main">
-          <span class="tag">Créé</span>
-          <h3>Pripam.com</h3>
-          <p>Mise en relation freelances et clients : profil public, tableau de bord et réservation avec paiement intégré.</p>
+    </header>
+
+    <section id="about">
+      <div class="section-head">
+        <span class="eyebrow">Qui je suis</span>
+        <h2>Développeur Full Stack & <span class="grad-text">Ingénierie Agentique</span></h2>
+        <p>
+          Je commence chaque projet par comprendre ce que l'organisation doit accomplir concrètement, avant de proposer une solution technique. Mon flux de travail s'appuie sur des agents d'ingénierie autonomes pour architecturer, développer et itérer sur plusieurs plateformes en parallèle, ce qui me permet de faire avancer plusieurs projets à la fois sans sacrifier la rigueur du code. Je construis en priorité une base technique solide, capable de tenir dans le temps et d'évoluer, avec des mises à jour régulières tout au long du projet.
+        </p>
+      </div>
+    </section>
+
+    <section id="process" class="soft">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Ma méthode</span>
+          <h2>Comment je <span class="grad-text">travaille</span></h2>
+          <p>Quatre étapes, répétées sur chaque plateforme que je construis.</p>
         </div>
-        <a class="visit" href="https://pripam.com" target="_blank" rel="noopener">pripam.com ↗</a>
-      </div>
-
-      <div class="project-row">
-        <img class="thumb" src="images/tera-agency.jpg" alt="Capture d'écran de la page d'accueil TERA Agency">
-        <div class="project-main">
-          <span class="tag">Créé</span>
-          <h3>TERA Agency</h3>
-          <p>Site de l'agence : présentation des services, tarification claire et parcours de devis en plusieurs étapes.</p>
+        <div class="card-grid">
+          <div class="feat-card">
+            <div class="feat-icon" style="background: var(--primary-10); color: var(--primary);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+            <h3>Comprendre</h3>
+            <p>Cerner ce que l'organisation doit accomplir concrètement avant de proposer une solution technique.</p>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon" style="background: var(--purple-10); color: var(--purple);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"></path><path d="m2 17 10 5 10-5"></path><path d="m2 12 10 5 10-5"></path></svg>
+            </div>
+            <h3>Concevoir</h3>
+            <p>Architecturer la plateforme avec des agents d'ingénierie autonomes, avant d'écrire la première ligne de code.</p>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon" style="background: var(--accent-10); color: var(--accent);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <h3>Construire</h3>
+            <p>Développer et itérer sur plusieurs plateformes en parallèle, sans sacrifier la rigueur du code.</p>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon" style="background: var(--green-10); color: var(--green);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"></path><path d="m16.24 7.76 2.83-2.83"></path><path d="M18 12h4"></path><path d="m16.24 16.24 2.83 2.83"></path><path d="M12 18v4"></path><path d="m4.93 19.07 2.83-2.83"></path><path d="M2 12h4"></path><path d="m4.93 4.93 2.83 2.83"></path></svg>
+            </div>
+            <h3>Faire évoluer</h3>
+            <p>Livrer une base technique qui tient dans le temps, avec des mises à jour régulières tout au long du projet.</p>
+          </div>
         </div>
-        <a class="visit" href="https://teragency.com" target="_blank" rel="noopener">teragency.com ↗</a>
       </div>
+    </section>
 
-      <div class="project-row">
-        <img class="thumb" src="images/dashboard-tera.jpg" alt="Capture d'écran du dashboard client TERA">
-        <div class="project-main">
-          <span class="tag">Créé seul</span>
-          <h3>Dashboard client TERA</h3>
-          <p>Outil de gestion interne : suivi des projets, finances multi-devises, devis reçus et messagerie client.</p>
+    <section id="services">
+      <div class="section-head">
+        <span class="eyebrow">Ma spécialité</span>
+        <h2>Ce que je <span class="grad-text">fais</span></h2>
+        <p>Quatre familles de travail, du frontend jusqu'au paiement.</p>
+      </div>
+      <div class="sol-grid">
+
+        <div class="sol-card">
+          <div class="sol-pic">
+            <div class="illus illus-web">
+              <div class="mock-browser">
+                <div class="mock-bar">
+                  <span class="mock-dot" style="background:#FF5F57"></span>
+                  <span class="mock-dot" style="background:#FEBC2E"></span>
+                  <span class="mock-dot" style="background:#28C840"></span>
+                  <div class="mock-url"></div>
+                </div>
+                <div class="mock-body">
+                  <div class="mock-nav"></div>
+                  <div class="mock-hero"></div>
+                  <div class="mock-cards">
+                    <div class="mock-card"></div>
+                    <div class="mock-card"></div>
+                    <div class="mock-card"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="sol-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+          </span>
+          <div class="sol-txt">
+            <h3>Développement Frontend</h3>
+            <p>Vue 3, Nuxt.js, TailwindCSS, des interfaces claires, rapides et responsives.</p>
+          </div>
         </div>
-        <a class="visit" href="https://app.teragency.com" target="_blank" rel="noopener">app.teragency.com ↗</a>
+
+        <div class="sol-card">
+          <div class="sol-pic">
+            <div class="illus illus-data">
+              <div class="mock-dash">
+                <div class="mock-stats">
+                  <div class="mock-stat"></div>
+                  <div class="mock-stat"></div>
+                </div>
+                <div class="mock-chart">
+                  <div class="mock-bar-el" style="height:40%"></div>
+                  <div class="mock-bar-el" style="height:70%"></div>
+                  <div class="mock-bar-el" style="height:55%"></div>
+                  <div class="mock-bar-el" style="height:90%"></div>
+                  <div class="mock-bar-el" style="height:60%"></div>
+                </div>
+                <div class="mock-rows">
+                  <div class="mock-row-el" style="width:80%"></div>
+                  <div class="mock-row-el" style="width:60%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="sol-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 4 8-8"></path><path d="M21 8v5h-5"></path></svg>
+          </span>
+          <div class="sol-txt">
+            <h3>Backend & données</h3>
+            <p>Supabase, PostgreSQL, Ruby on Rails, RLS et Edge Functions, la partie qui doit tenir dans le temps.</p>
+          </div>
+        </div>
+
+        <div class="sol-card">
+          <div class="sol-pic">
+            <div class="illus illus-agent">
+              <svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:88%;height:88%">
+                <line x1="34" y1="65" x2="98" y2="30" stroke="#10B981" stroke-width="2" stroke-dasharray="4 3" opacity="0.6"></line>
+                <line x1="34" y1="65" x2="98" y2="100" stroke="#10B981" stroke-width="2" stroke-dasharray="4 3" opacity="0.6"></line>
+                <line x1="98" y1="30" x2="166" y2="65" stroke="#10B981" stroke-width="2" stroke-dasharray="4 3" opacity="0.6"></line>
+                <line x1="98" y1="100" x2="166" y2="65" stroke="#10B981" stroke-width="2" stroke-dasharray="4 3" opacity="0.6"></line>
+                <circle cx="34" cy="65" r="15" fill="#fff" stroke="#10B981" stroke-width="2"></circle>
+                <path d="M28 65l4 4 8-8" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <circle cx="98" cy="30" r="15" fill="#fff" stroke="#10B981" stroke-width="2"></circle>
+                <path d="M92 30l4 4 8-8" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <circle cx="98" cy="100" r="15" fill="#fff" stroke="#10B981" stroke-width="2"></circle>
+                <path d="M92 100l4 4 8-8" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <circle cx="166" cy="65" r="17" fill="#059669"></circle>
+                <path d="M159 65l5 5 9-10" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div>
+          </div>
+          <span class="sol-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="5" rx="1.5"></rect><rect x="14" y="3" width="7" height="5" rx="1.5"></rect><rect x="3" y="12" width="18" height="5" rx="1.5"></rect><rect x="3" y="20" width="12" height="4" rx="1.5"></rect></svg>
+          </span>
+          <div class="sol-txt">
+            <h3>Ingénierie agentique</h3>
+            <p>Agents autonomes pour architecturer, développer et itérer plus vite sur plusieurs plateformes.</p>
+          </div>
+        </div>
+
+        <div class="sol-card">
+          <div class="sol-pic">
+            <div class="illus illus-pay">
+              <div class="mock-card-el">
+                <div class="mock-chip"></div>
+                <div>
+                  <div class="mock-card-line" style="margin-bottom:6px"></div>
+                  <div class="mock-card-line short"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="sol-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+          </span>
+          <div class="sol-txt">
+            <h3>Paiement en ligne</h3>
+            <p>Intégration de moyens de paiement (Stripe) directement dans le parcours d'achat.</p>
+          </div>
+        </div>
+
       </div>
+    </section>
 
-    </div>
-  </section>
+    <section id="portfolio" class="soft">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Mon travail</span>
+          <h2>Plateformes que j'ai <span class="grad-text">construites</span></h2>
+          <p>Ce que j'ai construit, seul ou en co-fondation.</p>
+        </div>
+        <div class="portfolio-grid">
 
-  <hr class="rule">
+          <div class="p-card">
+            <div class="thumb-wrap has-chrome"><img src="images/sabopay.png" alt="Capture d'écran du tableau de bord Sabopay"></div>
+            <div class="p-body">
+              <span class="tag">Collaboration</span>
+              <h3>Sabopay</h3>
+              <p>Plateforme SaaS de gestion d'entreprise, avec portail client en marque blanche. Co-fondée avec un associé, je porte l'architecture technique.</p>
+              <a class="visit" href="https://sabopay.co" target="_blank" rel="noopener">sabopay.co
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="13" height="13"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
 
-  <section>
-    <h2>Compétences techniques</h2>
-    <div class="skills-block">
-      <div class="skills-row">
-        <div class="sk-label">Frontend</div>
-        <div class="sk-list">HTML, CSS, JavaScript, TypeScript, Vue 3, Nuxt.js, TailwindCSS</div>
+          <div class="p-card">
+            <div class="thumb-wrap has-chrome"><img src="images/machea.png" alt="Capture d'écran de la page d'accueil Machea"></div>
+            <div class="p-body">
+              <span class="tag">Créé</span>
+              <h3>Machea</h3>
+              <p>Plateforme e-commerce multi-vendeurs pour le marché haïtien, avec paiement local intégré.</p>
+              <a class="visit" href="https://machea.pripam.com" target="_blank" rel="noopener">machea.pripam.com
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="13" height="13"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="p-card">
+            <div class="thumb-wrap has-chrome"><img src="images/pripam.png" alt="Capture d'écran de la page d'accueil Pripam.com"></div>
+            <div class="p-body">
+              <span class="tag">Créé</span>
+              <h3>Pripam.com</h3>
+              <p>Mise en relation freelances et clients : profil public, tableau de bord et réservation avec paiement intégré.</p>
+              <a class="visit" href="https://pripam.com" target="_blank" rel="noopener">pripam.com
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="13" height="13"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="p-card">
+            <div class="thumb-wrap"><img src="images/tera-agency.jpg" alt="Capture d'écran de la page d'accueil TERA Agency"></div>
+            <div class="p-body">
+              <span class="tag">Créé</span>
+              <h3>TERA Agency</h3>
+              <p>Site de l'agence : présentation des services, tarification claire et parcours de devis en plusieurs étapes.</p>
+              <a class="visit" href="https://teragency.com" target="_blank" rel="noopener">teragency.com
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="13" height="13"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="p-card">
+            <div class="thumb-wrap"><img src="images/dashboard-tera.jpg" alt="Capture d'écran du dashboard client TERA"></div>
+            <div class="p-body">
+              <span class="tag">Créé seul</span>
+              <h3>Dashboard client TERA</h3>
+              <p>Outil de gestion interne : suivi des projets, finances multi-devises, devis reçus et messagerie client.</p>
+              <a class="visit" href="https://app.teragency.com" target="_blank" rel="noopener">app.teragency.com
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="13" height="13"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
       </div>
-      <div class="skills-row">
-        <div class="sk-label">Backend & données</div>
-        <div class="sk-list">Supabase, PostgreSQL, WordPress / PHP</div>
+    </section>
+
+    <section id="parcours">
+      <div class="section-head left">
+        <span class="eyebrow">Parcours</span>
+        <h2>D'où je <span class="grad-text">viens</span></h2>
       </div>
-      <div class="skills-row">
-        <div class="sk-label">Outils</div>
-        <div class="sk-list">Vercel, Git, Stripe, MonCash (via un tiers)</div>
+      <div class="card-grid">
+        <div class="feat-card">
+          <div class="feat-icon" style="background: var(--primary-10); color: var(--primary);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"></path><path d="M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5"></path></svg>
+          </div>
+          <h3>Formation</h3>
+          <p><strong>1ère année</strong> en Technologie de l'Information et de la Communication (TIC).</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" style="background: var(--purple-10); color: var(--purple);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          </div>
+          <h3>Formations en ligne</h3>
+          <p>Développement full stack (React, Node.js et autres) via des cours payants en ligne.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" style="background: var(--accent-10); color: var(--accent);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          </div>
+          <h3>Co-fondateur TERA Agency</h3>
+          <p>Agence qui construit des plateformes web et des systèmes de gestion pour des entreprises, des ONG et d'autres organisations.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" style="background: var(--green-10); color: var(--green);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"></path><path d="m2 17 10 5 10-5"></path><path d="m2 12 10 5 10-5"></path></svg>
+          </div>
+          <h3>Co-fondateur Pripam Tech</h3>
+          <p>Association technologique basée à Saint-Marc, à l'origine de Machea et de Pripam.com.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <hr class="rule">
+    <section id="skills">
+      <div class="section-head left">
+        <span class="eyebrow">Compétences</span>
+        <h2>Compétences <span class="grad-text">techniques</span></h2>
+      </div>
+      <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="feat-card">
+          <div class="feat-icon" style="background: var(--primary-10); color: var(--primary);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+          </div>
+          <h3>Frontend</h3>
+          <div class="skill-pills">
+            <span><img src="https://cdn.simpleicons.org/html5" alt="">HTML</span>
+            <span><img src="https://cdn.simpleicons.org/css3" alt="">CSS</span>
+            <span><img src="https://cdn.simpleicons.org/javascript" alt="">JavaScript</span>
+            <span><img src="https://cdn.simpleicons.org/typescript" alt="">TypeScript</span>
+            <span><img src="https://cdn.simpleicons.org/vuedotjs" alt="">Vue 3</span>
+            <span><img src="https://cdn.simpleicons.org/nuxtdotjs" alt="">Nuxt.js</span>
+            <span><img src="https://cdn.simpleicons.org/react" alt="">React</span>
+            <span><img src="https://cdn.simpleicons.org/nextdotjs" alt="">Next.js</span>
+            <span><img src="https://cdn.simpleicons.org/tailwindcss" alt="">TailwindCSS</span>
+            <span><img src="https://cdn.simpleicons.org/pinia" alt="">Pinia</span>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" style="background: var(--purple-10); color: var(--purple);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 4 8-8"></path><path d="M21 8v5h-5"></path></svg>
+          </div>
+          <h3>Backend & données</h3>
+          <div class="skill-pills">
+            <span><img src="https://cdn.simpleicons.org/supabase" alt="">Supabase</span>
+            <span><img src="https://cdn.simpleicons.org/postgresql" alt="">PostgreSQL</span>
+            <span><img src="https://cdn.simpleicons.org/wordpress" alt="">WordPress</span>
+            <span><img src="https://cdn.simpleicons.org/php" alt="">PHP</span>
+            <span><img src="https://cdn.simpleicons.org/rubyonrails" alt="">Ruby on Rails</span>
+            <span><img src="https://cdn.simpleicons.org/nodedotjs" alt="">Node.js</span>
+            <span>RLS / sécurité BDD</span>
+            <span><img src="https://cdn.simpleicons.org/resend" alt="">Resend</span>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" style="background: var(--green-10); color: var(--green);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"></path></svg>
+          </div>
+          <h3>Outils</h3>
+          <div class="skill-pills">
+            <span><img src="https://cdn.simpleicons.org/vercel" alt="">Vercel</span>
+            <span><img src="https://cdn.simpleicons.org/git" alt="">Git</span>
+            <span>Paiement en ligne</span>
+            <span>i18n</span>
+            <span><img src="https://cdn.simpleicons.org/sentry" alt="">Sentry</span>
+            <span><img src="https://cdn.simpleicons.org/githubactions" alt="">GitHub Actions</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <footer class="contact">
-    <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:22px;margin:0 0 20px;">Contact</h2>
-    <p>Disponible pour échanger sur vos besoins et sur la manière dont je peux y répondre.</p>
-    <a class="mail" href="mailto:pierrecharlesguivens@gmail.com">pierrecharlesguivens@gmail.com</a>
-  </footer>
+    <section class="tight">
+      <footer class="contact">
+        <span class="eyebrow">Discutons</span>
+        <h2>Un projet en tête ? <span class="grad-text">Parlons-en.</span></h2>
+        <p>Disponible pour échanger sur vos besoins et sur la manière dont je peux y répondre.</p>
+        <div class="hero-actions" style="justify-content:center;">
+          <a class="btn btn-primary" href="mailto:pierrecharlesguivens@gmail.com">
+            pierrecharlesguivens@gmail.com
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </a>
+          <a class="btn btn-ghost-light" href="tel:+50934918656">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +509 3491-8656
+          </a>
+        </div>
+      </footer>
+    </section>
 
-  <div class="copyright">Guivens Pierre Charles — 2026</div>
+    <div class="copyright">Guivens Pierre Charles — 2026</div>
 
-</div>
+  </div>
 </body>
 </html>
