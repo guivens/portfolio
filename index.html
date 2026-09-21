@@ -166,11 +166,11 @@
     position: sticky;
     top: 14px;
     z-index: 30;
-    padding: 0 20px;
+    padding: 0 24px;
   }
 
   .nav {
-    max-width: 1000px;
+    max-width: 1180px;
     margin: 0 auto;
     background: var(--float);
     border: 1px solid var(--border);
@@ -239,7 +239,7 @@
   }
   @media (max-width: 480px) {
     .nav .brand-text { display: none; }
-    .nav-outer { top: 10px; padding: 0 12px; }
+    .nav-outer { top: 10px; padding: 0 24px; }
   }
 
   /* ---------- Hero ---------- */
@@ -343,16 +343,20 @@
   }
   @media (max-width: 780px) {
     .hero-grid { grid-template-columns: 1fr; }
-    .hero-grid > div:first-child { order: 2; text-align: center; }
+    .hero-grid > div:first-child { text-align: center; }
     .hero .lede { margin-left: auto; margin-right: auto; }
     .hero-actions { justify-content: center; }
-    .stage { order: 1; margin: 0 auto 12px; }
-    .float-dark { left: 10px; }
-    .float-light { right: 10px; }
+    .stage { max-width: 260px; margin: 28px auto 0; }
+    .float { padding: 7px 10px; gap: 7px; }
+    .f-icon { width: 24px; height: 24px; border-radius: 7px; }
+    .f-icon svg { width: 11px; height: 11px; }
+    .f-label { font-size: 8.5px; }
+    .f-big { font-size: 13px; }
+    .float-dark { top: 8px; left: 6px; }
+    .float-light { bottom: 8px; right: 6px; }
   }
-  @media (max-width: 420px) {
-    .float { padding: 9px 12px; }
-    .f-big { font-size: 15px; }
+  @media (max-width: 340px) {
+    .stage { max-width: 220px; }
   }
 
   /* ---------- Sections ---------- */
@@ -383,6 +387,12 @@
   }
   @media (max-width: 980px) { .card-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px) { .card-grid { grid-template-columns: 1fr; } }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 700px) {
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .skills-grid > :last-child { grid-column: 1 / -1; }
+  }
 
   .feat-card {
     background: var(--float);
@@ -586,7 +596,7 @@
       <div class="hero-grid">
         <div>
           <span class="eyebrow">Saint-Marc, Haïti</span>
-          <h1>Bonjour, je suis<br><span class="grad-text">Guivens PIERRE CHARLES</span></h1>
+          <h1><span id="greeting">Bonjour</span>, je suis<br><span class="grad-text">Guivens PIERRE CHARLES</span></h1>
           <p class="role">Développeur full stack / ingénierie agentique / étudiant en TIC</p>
           <p class="lede">
             Je conçois et je construis des plateformes web et des systèmes de gestion, en combinant développement full stack et outils d'ingénierie agentique pour livrer plus vite sans perdre en qualité.
@@ -916,7 +926,7 @@
         <span class="eyebrow">Compétences</span>
         <h2>Compétences <span class="grad-text">techniques</span></h2>
       </div>
-      <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="skills-grid">
         <div class="feat-card">
           <div class="feat-icon" style="background: var(--primary-10); color: var(--primary);">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
@@ -989,5 +999,13 @@
     <div class="copyright">Guivens Pierre Charles — 2026</div>
 
   </div>
+  <script>
+    (function () {
+      var h = new Date().getHours();
+      var greeting = (h >= 18 || h < 5) ? "Bonsoir" : "Bonjour";
+      var el = document.getElementById("greeting");
+      if (el) el.textContent = greeting;
+    })();
+  </script>
 </body>
 </html>
